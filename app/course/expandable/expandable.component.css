@@ -1,0 +1,36 @@
+h4{
+    font-weight: 400;
+}
+
+.date{
+    font-size: 14px;
+}
+
+
+
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-label { margin-top:-15px; }
+
+.matSize{
+    width: 180px;
+}
+.alert{
+    color: red;
+}
+
+@media(max-width:425px){
+    h5{
+        font-size: 18px;
+    }
+    .date{
+        font-size: 10px;
+       
+    }
+}
+
+@media(max-width:768px){
+    div.h5{
+        font-size: 9px;
+    }
+}

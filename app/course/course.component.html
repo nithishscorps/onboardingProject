@@ -1,0 +1,47 @@
+<div class="main" fxLayout="row">
+    <div style="width: 100%;height: 100%;" fxFlex="100" fxFlex.gt-md="50">
+        <form [formGroup]="detailedForm"  class="main1" fxLayout="column" fxLayoutGap="10px">
+            <div>
+                <h1 >Add Course Details</h1>
+                <mat-divider></mat-divider>
+            </div>
+            <h4  style="margin-top: 6px;margin-bottom: 0px;">COURSE </h4>
+            <div fxLayout="column"  >
+                <h5 [ngClass]="{'alert': !detailedForm.get('course_name').valid && verify}" style="margin: 0px;font-size: 12px;"> Course Name</h5>
+                <div >
+                  <mat-form-field  appearance="outline" style="margin: 0px;width: 100%;">
+                    <input formControlName="course_name" style="border-top: 0px;" matInput placeholder="Add course name">
+                 </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutGap="10px">
+                <h5 [ngClass]="{'alert': !detailedForm.get('aircraft_type').valid && verify}" style="margin: 0px;font-size: 12px;"> Aircraft Type </h5>
+                <mat-radio-group formControlName="aircraft_type" aria-label="Select an option" fxLayoutGap="20px"> 
+                    <mat-radio-button value="multi_rotar"> Multi Rotar </mat-radio-button>
+                    <mat-radio-button value="fixed_wing"> Fixed Wing </mat-radio-button>
+                  </mat-radio-group>
+            </div>
+            <router-outlet name="expand"></router-outlet>
+            <div fxLayout fxLayoutAlign="start center" style="height: 30px;cursor: pointer;" (click)="add_batch()">
+                <mat-icon color="accent">add_circle</mat-icon>
+                <h6 style="color: rgb(62, 179, 7);font-size: 10px;"  >ADD ANOTHER COURSE DATE</h6>
+            </div>
+            
+                <div fxLayout="column">
+                    <h4 [ngClass]="{'alert': !detailedForm.get('course_details').valid && verify}" style="margin-bottom: 1px;">Course Details</h4>
+                    <mat-form-field appearance="outline" color="accent">
+                        <mat-label>Add details</mat-label>
+                        <textarea formControlName="course_details" matInput></textarea>
+                      </mat-form-field>
+                   </div>
+        </form>
+    
+    <router-outlet name="bottom"></router-outlet>
+        
+    </div>
+    <div  fxFlex="0" fxFlex.gt-md="50" style="background-image: url('../../assets/bg_2.png');height: 100%;width: 100%;background-color: #F5F6FA;background-position: center;background-repeat: no-repeat;background-size: cover;">
+ 
+    </div>
+ </div>
+ 
+ 
