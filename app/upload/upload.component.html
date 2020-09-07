@@ -1,0 +1,37 @@
+<div class="main" fxLayout="row">
+   <div  fxFlex="100" fxFlex.gt-md="50" >
+       <div class="main1">
+        <div style="margin-top: 0px;" fxLayout="column">
+            <h1  style="margin: 0px;text-align: center;">Add some details of your training institute</h1>
+           <div fxLayout="column">
+               <h5>INSTITUTE LOGO</h5>
+               <div fxLayout>
+                 <img src="../../assets/ic_logoiid.png">
+               </div>
+           </div>
+           <div fxLayout="column" fxLayoutGap="1px" >
+                <h5> NAME OF THE INSTITUTE</h5>
+                <mat-form-field style="width: 100%;border: 0px;padding: 0px;" appearance="outline" >
+                   <input style="border-top: 0px;" matInput placeholder="Name of the institute">
+                </mat-form-field>
+           </div>
+           <div>
+              <router-outlet name="uploads"></router-outlet>
+           </div>
+           
+        </div> 
+       </div>
+       <router-outlet name="bottom"></router-outlet>
+      
+       
+         
+      
+      
+    
+   </div>
+   <div fxFlex="0" fxFlex.gt-sm="50" style="background-image: url('../../assets/bg_1.png');height: 100%;width: 100%;background-color: #F5F6FA;background-position: center;background-repeat: no-repeat;background-size: cover;">
+
+   </div>
+   
+</div>
+

@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutGap.lt-md="10px" fxLayoutGap.lt-sm="10px">
+   <div *ngFor="let category of categories;let i=index;" fxLayout="column" >
+      <div fxLayout="row" fxLayoutAlign="space-between">
+          <div fxLayout="row" fxLayoutGap="10px" >
+             <h5>{{category}}</h5>
+             <h5 *ngIf="i!==1" style="font-size: 12px;font-weight: 100;">(Optional)</h5>
+             <h5 *ngIf="i==1" [ngClass]="{'alert': compulsory}"  style="font-size: 12px;font-weight: 100;">(Required)</h5>
+             
+          </div>
+          <div>
+            <h5 style="color: blue;cursor: pointer;" (click)="fileInput.click()">  
+               UPLOAD
+               <input #fileInput type="file" (change)="onFile($event.target.files,i)" style="display:none;" />
+             </h5>
+          </div>
+      </div>
+      <mat-divider></mat-divider><div  style="padding: 8px;color: red;" *ngIf="compulsory && i===1">this is Required</div>
+      <mat-list  fxLayout="column" >
+         <div  *ngFor="let item of itemsArr[i];let in=index" >
+            <div fxLayout style="cursor: pointer;">
+              <mat-list-item > {{item}} </mat-list-item>
+              <mat-icon (click)="delete(i,in)" color="warn">delete</mat-icon>
+            </div>
+           
+           
+         </div>
+       
+     </mat-list>
+  </div>
+  
+</div>
