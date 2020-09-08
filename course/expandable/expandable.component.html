@@ -1,0 +1,98 @@
+<div fxLayout="column" fxLayoutGap="10px">
+
+  <div [formGroup]="form" *ngFor="let form of expandFormArr;let i = index">            
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+           <mat-expansion-panel-header #panelH (click)="panelH._toggle()">
+            <mat-panel-title fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="row" fxLayoutGap="0px">
+                    <h4 [ngClass]="{'alert': (!expandFormArr[i].get('cost').valid  || !expandFormArr[i].get('city').valid) && verify}" style="margin: 0px;"> {{ "BATCH" + (i+1) }}</h4>
+                    <div class="dates" fxLayout fxLayoutGap="5px">
+                      <div fxFlex="8"></div>
+                      <div class="date" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.gt-xs="center center">        
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <input matInput [matDatepicker]="picker" formControlName="sDate" placeholder="START DAY">
+                       </div>
+                       <div class="date" fxLayout="row" fxLayout.lt-sm="column"  fxLayoutAlign.gt-xs="center center">        
+                        <mat-datepicker-toggle matSuffix [for]="piker"></mat-datepicker-toggle>
+                        <mat-datepicker #piker></mat-datepicker>
+                        <input matInput [matDatepicker]="piker" formControlName="eDate" placeholder="END DAY">
+                       </div>
+                    </div>
+
+                   
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <div>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button (click)="delete(i)" mat-menu-item>
+                                <mat-icon color="warn">delete</mat-icon>
+                              <span>Delete</span>
+                            </button>
+                            <button (click)="reset(i)" mat-menu-item >
+                                <mat-icon color="accent">rotate_right</mat-icon>
+                              <span>Reset</span>
+                            </button>
+                          </mat-menu>
+                    </div>
+                    <mat-icon color="accent" matDatepickerToggleIcon (click)="panelH._toggle()">keyboard_arrow_down</mat-icon>
+                </div>                
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div >
+               <div fxLayout="row" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center" >
+                 
+                <div fxLayout="column">
+                  <h4 [ngClass]="{'alert': !expandFormArr[i].get('cost').valid && verify}" style="font-size: 12px;margin: 0px;">Course Cost(Ex GST)</h4>
+                  <mat-form-field  class="matSize" color="accent"  appearance="outline" >
+                      <input formControlName="cost" matInput placeholder="Rs.">
+                   </mat-form-field>
+                   
+                 </div>
+               </div>
+               <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+                
+                <div>
+                    <h4 [ngClass]="{'alert': !expandFormArr[i].get('lng').valid && verify}" style="font-size: 12px;margin: 0px;">Course Languages</h4>
+                    <mat-form-field class="matSize"  appearance="outline" color="accent">
+                      
+                      <mat-select formControlName="lng" placeholder="select languages" multiple>
+                        <mat-option *ngFor="let language of lngs" [value]="language">{{language}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column" >
+                    <h4 [ngClass]="{'alert':!expandFormArr[i].get('city').valid && verify}" style="font-size: 12px;margin: 0px;">Course Location</h4>
+                  <mat-form-field class="matSize"   appearance="outline" color="accent">
+                   
+                    <mat-select formControlName="city" placeholder="select city">
+                      <mat-option  *ngFor="let city of cits" [value]="city">
+                        {{city}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                 
+                   </div>
+
+               </div>
+               <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+                   <div>
+                       <p [ngClass]="{'alert': !expandFormArr[i].get('weekend').valid && verify}">is this a weekend course</p>
+                   </div>
+                   <div>
+                    <mat-radio-group formControlName="weekend" aria-label="Select an option" fxLayoutGap="20px"> 
+                        <mat-radio-button value="yes"> YES </mat-radio-button>
+                        <mat-radio-button value="no"> NO </mat-radio-button>
+                      </mat-radio-group>
+                   </div>
+               </div>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+  </div> 
+</div>
+

@@ -1,0 +1,48 @@
+<div class="main" fxLayout="row">
+    <div class="main1" fxLayout="column" fxFlex="100" fxFlex.gt-md="50" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start center" fxLayoutGap="10px">
+            <div>
+                <h2>Review Details</h2>
+            </div>
+            <div>
+                <h3>Course name:</h3>
+                <p>
+                    {{reviewData.course_name}}
+                </p>
+            </div>
+            <div>
+                <h3>Aircraft type:</h3>
+                <p>
+                    {{reviewData.aircraft_type}}
+                </p>                 
+            </div>
+            <div *ngFor="let batch of reviewData.batch">
+                <div>
+                    <h3>Course city:</h3>
+                    <p>
+                        {{batch.city}}
+                    </p>
+                </div>
+                <div>
+                    <h3>Course cost:</h3>
+                    <p>
+                        {{batch.cost}}
+                    </p>
+                </div>
+                <div>
+                    <h3>Languages selected:</h3>
+                    <p *ngFor="let lang of batch.lng">
+                        {{lang}}
+                    </p>
+                </div>
+            </div>
+            <div>
+                <h3>Course Details:</h3>
+                <p>
+                    {{reviewData.course_details}}
+                </p>
+            </div>
+    </div>
+    <div  fxFlex="0" fxFlex.gt-md="50" style="background-image: url('../../assets/bg_2.png');height: 100%;width: 100%;background-color: #F5F6FA;background-position: center;background-repeat: no-repeat;background-size: cover;">
+ 
+    </div>
+</div>
